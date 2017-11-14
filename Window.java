@@ -64,6 +64,7 @@ public class Window {
 		JButton generateButton = new JButton("Generate map");
 		JButton runButton = new JButton("Run");
 		JButton clearButton = new JButton("Clear way");
+		JButton clearMapButton = new JButton("Clear map");
 		canvas = new Canvas();
 
 		GridBagConstraints c = new GridBagConstraints();
@@ -89,13 +90,18 @@ public class Window {
 
 		c.gridx = 0;
 		c.gridy = 2;
-		c.weighty = 1 - 2 * PROPOTION_TOP;
 		frame.add(clearButton, c);
 		clearButton.addMouseListener(new ClearListener());
 
+		c.gridx = 0;
+		c.gridy = 3;
+		c.weighty = 1 - 2 * PROPOTION_TOP;
+		frame.add(clearMapButton, c);
+		clearMapButton.addMouseListener(new ClearMapListener());
+		
 		c.gridx = 1;
 		c.gridy = 0;
-		c.gridheight = 3;
+		c.gridheight = 4;
 		c.weightx = 1 - PROPOTION_RIGHT;
 		c.fill = GridBagConstraints.BOTH;
 		c.insets = new Insets(30, 10, 45, 45);
@@ -226,5 +232,26 @@ public class Window {
 		}
 
 	}
+	
+	public class ClearMapListener implements MouseListener {
+
+		public void mouseClicked(MouseEvent e) {
+			alg._map = new Map(Canvas.CANVAS_WIDTH / 10, Canvas.CANVAS_HEIGHT / 10);
+			canvas.drawMap(alg.getMap());
+		}
+
+		public void mouseEntered(MouseEvent e) {
+		}
+
+		public void mouseExited(MouseEvent e) {
+		}
+
+		public void mousePressed(MouseEvent e) {
+		}
+
+		public void mouseReleased(MouseEvent e) {
+		}
+	}
+
 
 }

@@ -17,6 +17,10 @@ public class Algorithm {
 		_map.generate();
 	}
 	
+	public void makeZeroMap() {
+		_map = new Map();
+	}
+	
 	public Map getMap() {
 		return _map;
 	}
